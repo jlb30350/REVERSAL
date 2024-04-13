@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Créer une nouvelle salle</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+  <style>
+    /* Vos styles ici */
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-body">
+      <h1 class="card-title text-center mb-4">Créer une nouvelle salle</h1>
+      <%= image_tag 'logo.png', alt: 'Mon Logo', class: 'd-block mx-auto mb-4', style: 'width: 60px;' %>
+
+      <%= form_with(model: @salle, local: true) do |form| %>
+        <div class="mb-3">
+          <%= form.label :name, 'Nom de la salle:', class: 'form-label' %>
+          <%= form.text_field :name, class: 'form-control', required: true, id: 'salle_name' %>
+
+          <% if Salle.exists? %>
+            <%= form.label :salle_id, 'Choisissez une salle existante:', class: 'form-label mt-3' %>
+            <%= form.select :salle_id, Salle.all.collect { |s| [s.name, s.id] }, { include_blank: true }, { class: 'form-control', required: true, id: 'salle_id_select' } %>
+          <% else %>
+            <p>Veuillez d'abord créer et nommer une salle pour finir votre reservation en cliquant sur le bouton ci dessous. </p>
+          <% end %>
+        </div>
+
+        <div class="d-grid gap-2">
+          <%= form.submit "Créer la salle", class: "btn btn-primary", id: "submit_button" %>
+          <%= link_to 'Retour', root_path, class: "btn btn-outline-secondary mt-2" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var submitButton = document.getElementById("submit_button");
+    submitButton.addEventListener("click", function(e) {
+      var selectElement = document.getElementById("salle_id_select");
+      if (selectElement && selectElement.options.length === 0) { // Vérifie si le select existe et est vide
+        e.preventDefault(); // Empêche la soumission du formulaire
+        alert("Veuillez d'abord créer et nommer une salle pour finir votre reservation en cliquant sur le bouton ci dessous. Merci.");
+        window.location.href = "<%= new_salle_path %>"; // Redirige vers la page de création de salle
+      }
+    });
+  });
+  </script>
+</body>
+</html>

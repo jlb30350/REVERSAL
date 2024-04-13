@@ -1,0 +1,85 @@
+<!--Index de l'app :views/salles/index.html.erb-->
+
+<% if flash[:notice].present? %>
+  <div class="alert alert-success">
+    <p class="error-text">&nbsp; <%= flash[:notice] %></p>
+  </div>
+<% end %>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App de Réservation de Salles</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+  <style>
+    /* Vos styles CSS existants */
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Logo de l'application -->
+    <%= image_tag 'logo.png', alt: 'Mon Logo', style: 'width: 70px; height: auto;' %>
+    <div class="text-center">
+      <p>Heure actuelle : <%= Time.now.strftime("%H:%M:%S") %></p>
+    </div>
+
+    <!-- Carte de bienvenue -->
+    <div class="card">
+      <h2>Reserver et gerer vos salles avec RESERVSAL</h2>
+      <div>
+        <a href="/reservations/new" class="btn">Réserver une salle</a>
+        <!-- Lien pour voir les réservations -->
+        <a href="/reservations" class="btn" style="background-color: #6050DC; border-color: #ffc107;">Voir les réservations</a>
+        <!-- Lien pour créer une nouvelle salle -->
+        <a href="/salles/new" class="btn" style="background-color: #28a745; border-color: #28a745;">Créer et nommée vos salles</a>
+      </div>
+    </div>
+
+    <!-- Liste des salles -->
+    <div class="container">
+      <h1>Noms de vos salles</h1>
+      <ul>
+        <% @salles.each do |salle| %>
+          
+            <div class="salle-name"><%= salle.name %></div>
+            <div class="salle-actions">
+              <%= form_with(url: salle_path(salle), method: :delete, data: { confirm: 'Êtes-vous sûr de vouloir supprimer cette salle?' }) do |form| %>
+                <%= form.submit 'Supprimer', class: "btn btn-danger btn-sm" %>
+                <%= link_to 'Modifier', edit_salle_path(salle), class: "btn btn-info btn-sm" %>
+              <% end %>
+            </div>
+          
+        <% end %>
+      </ul>
+    </div>
+
+    <!-- Liste des réservations ajoutée ici -->
+    <div class="container">
+      <h1>Dernieres réservations</h1>
+    
+        <% @reservations.each do |reservation| %>
+          
+            <div class="reservation-details">
+              <!-- Détails de la réservation -->
+              <p>Nom de la personne : <%= reservation.reserver_name %></p> <!-- Ajout du nom de la personne -->
+              <p>Réservation pour la salle: <%= reservation.salle.name %></p>
+              <p>Date et heure: <%= reservation.start_time.strftime("%d/%m/%Y à %H:%M") %> à <%= reservation.end_time.strftime("%d/%m/%Y à %H:%M") %></p>
+            </div>
+            <div class="reservation-actions">
+              <%= form_with(url: reservation_path(reservation), method: :delete, local: true, data: { confirm: 'Êtes-vous sûr de vouloir supprimer cette réservation ?' }) do |form| %>
+              <%= form.submit 'Supprimer', class: "btn btn-danger btn-sm" %>
+              <%= link_to 'Modifier', edit_reservation_path(reservation), class: "btn btn-info btn-sm" %>
+              
+  <!-- Boutons ici -->
+</div>
+              <% end %>
+            </div>
+          
+        <% end %>
+      
+    </div>
+  </div>
+</body>
+</html>

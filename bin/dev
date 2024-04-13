@@ -1,0 +1,5 @@
+#!/bin/sh
+# bin/dev
+
+# Assurez-vous que foreman est installé (`gem install foreman` ou ajouté dans votre Gemfile)
+foreman start -f Procfile.dev

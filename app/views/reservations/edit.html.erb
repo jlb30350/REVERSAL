@@ -1,0 +1,45 @@
+<div class="container mt-5">
+  <div class="d-flex justify-content-center">
+    <div class="w-75">
+      <h1 class="mb-2">Modification de votre réservation</h1>
+
+      <%= form_with(model: @reservation, local: true, html: { class: "needs-validation", novalidate: "" }) do |form| %>
+        <% if @reservation.errors.any? %>
+          <div id="error_explanation" class="alert alert-danger">
+            <h2><%= pluralize(@reservation.errors.count, "erreur") %> a empêché cette réservation d'être sauvegardée :</h2>
+            <ul>
+              <% @reservation.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <%= form.label :lieu, class: 'form-label' %>
+        <%= form.text_field :lieu, class: 'form-control mb-3' %>
+
+        <%= form.label :start_time, 'Date et Heure de Début', class: 'form-label' %>
+        <%= form.datetime_select :start_time, {}, class: 'form-control mb-3' %>
+
+        <%= form.label :end_time, 'Date et Heure de Fin', class: 'form-label' %>
+        <%= form.datetime_select :end_time, {}, class: 'form-control mb-3' %>
+
+        <%= form.label :reserver_name, 'Nom du Réservataire', class: 'form-label' %>
+        <%= form.text_field :reserver_name, class: 'form-control mb-3' %>
+
+        <%= form.label :reserver_phone, 'Téléphone du Réservataire', class: 'form-label' %>
+        <%= form.text_field :reserver_phone, class: 'form-control mb-3' %>
+
+        <%= form.label :reserver_email, 'Email du Réservataire', class: 'form-label' %>
+        <%= form.text_field :reserver_email, class: 'form-control mb-3' %>
+
+        <!-- Ajoutez d'autres champs ici selon les attributs de votre modèle de réservation -->
+
+        <div class="d-flex justify-content-center">
+          <%= form.submit "Sauvegarder", class: "btn btn-primary mr-2" %>
+          <%= link_to 'Retour', reservations_path, class: "btn btn-secondary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

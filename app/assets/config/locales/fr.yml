@@ -1,0 +1,5 @@
+fr:
+  reservations:
+    show:
+      reservation_id: "ID de la Réservation"
+      # Ajoutez d'autres traductions ici

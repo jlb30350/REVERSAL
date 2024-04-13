@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liste des réservations</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+
+<div class="container">
+  <h1 class="title">Liste des réservations</h1>
+  <%= form_tag destroy_multiple_reservations_path, method: :delete do %>
+    <div class="table-responsive">
+      <table class="reservations-table">
+        <thead>
+          <tr>
+            <th><input type="checkbox" id="checkAll"></th>
+            <th>ID de la Réservation</th>
+            <th>Nom de la Salle</th>
+            <th>Date et Heure de Début</th>
+            <th>Date et Heure de Fin</th>
+            <th>Nom du Réservataire</th>
+            <th>Téléphone du Réservataire</th>
+            <th>Email du Réservataire</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @reservations.each do |reservation| %>
+            <tr>
+              <td><%= check_box_tag "reservation_ids[]", reservation.id, false, class: "checkbox" %></td>
+              <td><%= reservation.id %></td>
+              <td><%= reservation.salle.present? ? reservation.salle.name : "Salle inconnue" %></td>
+              <td><%= reservation.start_time %></td>
+              <td><%= reservation.end_time %></td>
+              <td><%= reservation.reserver_name %></td>
+              <td><%= reservation.reserver_phone %></td>
+              <td><%= reservation.reserver_email %></td>
+              <td class="actions">
+                <%= link_to 'Show', reservation, class: "btn btn-primary btn-sm" %>
+                <%= link_to 'Edit', edit_reservation_path(reservation), class: "btn btn-secondary btn-sm" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <%= link_to 'Retour', root_path, class: "btn btn-secondary" %>
+    <%= button_tag "Delete selected reservations", class: "btn btn-danger" %>
+  <% end %>
+</div>
+
+<script>
+  document.getElementById('checkAll').addEventListener('change', function() {
+    const checkboxes = document.querySelectorAll('.checkbox');
+    checkboxes.forEach(checkbox => {
+      checkbox.checked = this.checked;
+    });
+  });
+</script>
+
+</body>
+</html>

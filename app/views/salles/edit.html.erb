@@ -1,0 +1,27 @@
+<h1>Modifier les détails de la salle</h1>
+
+<% if @salle.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@salle.errors.count, "error") %> empêché cette salle d'être sauvegardée :</h2>
+    <ul>
+      <% @salle.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with(model: @salle, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <!-- Ajoutez d'autres champs du formulaire selon vos besoins -->
+
+  <div class="actions">
+    <%= form.submit "Sauvegarder les modifications", class: "btn btn-info btn-sm" %>
+  </div>
+<% end %>
+
+<%= link_to 'Retour aux salles', salles_path, class: "btn btn-warning btn-sm" %>

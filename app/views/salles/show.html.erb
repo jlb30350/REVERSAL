@@ -1,0 +1,21 @@
+<!-- app/views/salles/show.html.erb -->
+
+<h1>Détails de la salle</h1>
+
+<p>
+  <strong>Nom de la salle :</strong>
+  <%= @salle.name %>
+</p>
+
+<!-- Si vous avez d'autres attributs de la salle à afficher, ajoutez-les ici -->
+
+<!-- Bouton pour éditer la salle -->
+<%= link_to 'Modifier', edit_salle_path(@salle), class: "btn btn-primary" %>
+
+<!-- Formulaire pour supprimer la salle -->
+<%= form_with(url: salle_path(@salle), method: :delete, data: { confirm: 'Êtes-vous sûr de vouloir supprimer cette salle?' }) do |form| %>
+  <%= form.submit 'Supprimer', class: "btn btn-danger" %>
+<% end %>
+
+<!-- Lien pour retourner à la liste des salles -->
+<%= link_to 'Acceuil', salles_path, class: "btn btn-secondary" %>

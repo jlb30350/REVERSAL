@@ -1,0 +1,25 @@
+
+<!--views/reservation/new.html.erb-->
+<h1>Nouvelle Salle</h1>
+<%= image_tag 'logo.png', alt: 'Mon Logo', style: 'width: 50px; height: auto;' %>
+
+<%= form_with(model: @salle, url: salles_path, method: "post") do |form| %>
+  <div class="field">
+    <%= form.label :name, "Nom de la salle" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :capacity, "Capacité" %>
+    <%= form.number_field :capacity %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amenities, "Équipements" %>
+    <%= form.text_area :amenities %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Créer la salle" %>
+  </div>
+<% end %>

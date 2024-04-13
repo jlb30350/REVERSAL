@@ -1,0 +1,22 @@
+<!-- views/layouts/application.html.erb -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AppReservationssalles</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag "styles", "data-turbo-track": "reload" %>
+  <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
+</head>
+<body>
+  <% if current_user %>
+    <%= link_to 'Déconnexion', destroy_user_session_path, method: :delete, class: "btn btn-warning" %>
+    <%= button_to "Supprimer mon compte", destroy_user_path(current_user), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible." }, class: "btn btn-danger" %>
+  <% end %>
+  <div class="body-content">
+    <%= yield %>
+  </div>
+</body>
+</html>
