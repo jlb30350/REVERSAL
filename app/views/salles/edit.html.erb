@@ -1,27 +1,74 @@
-<h1>Modifier les détails de la salle</h1>
-
-<% if @salle.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@salle.errors.count, "error") %> empêché cette salle d'être sauvegardée :</h2>
-    <ul>
-      <% @salle.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
 <%= form_with(model: @salle, local: true) do |form| %>
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="form-group">
+    <%= form.label :name, 'Nom de la salle:' %>
+    <%= form.text_field :name, class: 'form-control', required: true %>
   </div>
 
-  <!-- Ajoutez d'autres champs du formulaire selon vos besoins -->
+  <div class="form-group">
+    <%= form.label :capacity, 'Capacité maximale:' %>
+    <%= form.number_field :capacity, class: 'form-control' %>
+  </div>
 
-  <div class="actions">
-    <%= form.submit "Sauvegarder les modifications", class: "btn btn-info btn-sm" %>
+  <div class="form-group">
+    <%= form.label :description, 'Description:' %>
+    <%= form.text_area :description, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :air_conditioning, 'Climatisation réversible:' %>
+    <div class="form-check">
+      <%= form.radio_button :air_conditioning, true, class: 'form-check-input', id: 'air_conditioning_yes' %>
+      <%= form.label 'air_conditioning_yes', 'Oui', class: 'form-check-label' %>
+    </div>
+    <div class="form-check">
+      <%= form.radio_button :air_conditioning, false, class: 'form-check-input', id: 'air_conditioning_no' %>
+      <%= form.label 'air_conditioning_no', 'Non', class: 'form-check-label' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :sound_system, 'Système de son:' %>
+    <div class="form-check">
+      <%= form.radio_button :sound_system, true, class: 'form-check-input', id: 'sound_system_yes' %>
+      <%= form.label 'sound_system_yes', 'Oui', class: 'form-check-label' %>
+    </div>
+    <div class="form-check">
+      <%= form.radio_button :sound_system, false, class: 'form-check-input', id: 'sound_system_no' %>
+      <%= form.label 'sound_system_no', 'Non', class: 'form-check-label' %>
+    </div>
+  </div>
+
+  <!-- Répéter la même structure pour les autres attributs -->
+
+  <div class="form-group">
+    <%= form.label :wifi_code, 'Code WiFi:' %>
+    <%= form.text_field :wifi_code, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :area, 'Surface de la salle (m²):' %>
+    <%= form.number_field :area, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :table_count, 'Nombre de tables:' %>
+    <%= form.number_field :table_count, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :water_fountain, 'Fontaine d\'eau:' %>
+    <div class="form-check">
+      <%= form.radio_button :water_fountain, true, class: 'form-check-input', id: 'water_fountain_yes' %>
+      <%= form.label 'water_fountain_yes', 'Oui', class: 'form-check-label' %>
+    </div>
+    <div class="form-check">
+      <%= form.radio_button :water_fountain, false, class: 'form-check-input', id: 'water_fountain_no' %>
+      <%= form.label 'water_fountain_no', 'Non', class: 'form-check-label' %>
+    </div>
+  </div>
+
+  <div class="actions mt-3">
+    <%= form.submit "Mettre à jour la salle", class: "btn btn-primary btn-block" %>
+    <%= link_to 'Retour', salle_path(@salle), class: "btn btn-outline-secondary btn-block mt-2" %>
   </div>
 <% end %>
-
-<%= link_to 'Retour aux salles', salles_path, class: "btn btn-warning btn-sm" %>

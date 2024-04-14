@@ -6,50 +6,85 @@
   <title>Créer une nouvelle salle</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
   <style>
-    /* Vos styles ici */
+    .input-small {
+      width: 200px; /* Largeur personnalisée pour les champs */
+    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <div class="card-body">
-      <h1 class="card-title text-center mb-4">Créer une nouvelle salle</h1>
-      <%= image_tag 'logo.png', alt: 'Mon Logo', class: 'd-block mx-auto mb-4', style: 'width: 60px;' %>
+  <div class="container mt-5">
+    <h1 class="text-center">Créer une nouvelle salle</h1>
+    <%= image_tag('logo.png', alt: 'Mon Logo', class: 'd-block mx-auto', style: 'width: 50px;') %>
+  
+    <%= form_with(model: @salle, local: true) do |form| %>
+      <div class="form-group">
+        <%= form.label :name, 'Nom de la salle:' %>
+        <%= form.text_field :name, class: 'form-control input-small', required: true %>
+      </div>
 
-      <%= form_with(model: @salle, local: true) do |form| %>
-        <div class="mb-3">
-          <%= form.label :name, 'Nom de la salle:', class: 'form-label' %>
-          <%= form.text_field :name, class: 'form-control', required: true, id: 'salle_name' %>
+      <div class="form-group">
+        <%= form.label :capacity, 'Capacité maximale:' %>
+        <%= form.number_field :capacity, class: 'form-control input-small' %>
+      </div>
 
-          <% if Salle.exists? %>
-            <%= form.label :salle_id, 'Choisissez une salle existante:', class: 'form-label mt-3' %>
-            <%= form.select :salle_id, Salle.all.collect { |s| [s.name, s.id] }, { include_blank: true }, { class: 'form-control', required: true, id: 'salle_id_select' } %>
-          <% else %>
-            <p>Veuillez d'abord créer et nommer une salle pour finir votre reservation en cliquant sur le bouton ci dessous. </p>
-          <% end %>
+      <div class="form-group">
+        <%= form.label :description, 'Description:' %>
+        <%= form.text_area :description, class: 'form-control input-small' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :air_conditioning, 'Climatisation réversible:' %>
+        <div>
+          <%= form.radio_button :air_conditioning, true, class: 'form-check-input' %> Oui
+          <%= form.radio_button :air_conditioning, false, class: 'form-check-input' %> Non
         </div>
+      </div>
 
-        <div class="d-grid gap-2">
-          <%= form.submit "Créer la salle", class: "btn btn-primary", id: "submit_button" %>
-          <%= link_to 'Retour', root_path, class: "btn btn-outline-secondary mt-2" %>
+      <div class="form-group">
+        <%= form.label :sound_system, 'Système de son:' %>
+        <div>
+          <%= form.radio_button :sound_system, true, class: 'form-check-input' %> Oui
+          <%= form.radio_button :sound_system, false, class: 'form-check-input' %> Non
         </div>
-      <% end %>
-    </div>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :projector, 'Rétroprojecteur:' %>
+        <div>
+          <%= form.radio_button :projector, true, class: 'form-check-input' %> Oui
+          <%= form.radio_button :projector, false, class: 'form-check-input' %> Non
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :wifi_code, 'Code WiFi:' %>
+        <%= form.text_field :wifi_code, class: 'form-control input-small' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :area, 'Surface de la salle (m²):' %>
+        <%= form.number_field :area, class: 'form-control input-small' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :table_count, 'Nombre de tables:' %>
+        <%= form.number_field :table_count, class: 'form-control input-small' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :water_fountain, "Fontaine d'eau" %>
+        <div>
+          <%= form.radio_button :water_fountain, true, class: 'form-check-input' %> Oui
+          <%= form.radio_button :water_fountain, false, class: 'form-check-input' %> Non
+        </div>
+      </div>
+
+      <div class="actions mt-3">
+        <%= form.submit "Créer la salle", class: "btn btn-primary btn-block" %>
+        <%= link_to 'Retour', salles_path, class: "btn btn-outline-secondary btn-block mt-2" %>
+      </div>
+    <% end %>
   </div>
-
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-
-  <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    var submitButton = document.getElementById("submit_button");
-    submitButton.addEventListener("click", function(e) {
-      var selectElement = document.getElementById("salle_id_select");
-      if (selectElement && selectElement.options.length === 0) { // Vérifie si le select existe et est vide
-        e.preventDefault(); // Empêche la soumission du formulaire
-        alert("Veuillez d'abord créer et nommer une salle pour finir votre reservation en cliquant sur le bouton ci dessous. Merci.");
-        window.location.href = "<%= new_salle_path %>"; // Redirige vers la page de création de salle
-      }
-    });
-  });
-  </script>
 </body>
 </html>

@@ -1,0 +1,15 @@
+current directory: /home/jlb/mesprojets/AppReservationsSalles/AppReservationssalles/vendor/bundle/ruby/3.0.0/gems/debug_inspector-1.2.0/ext/debug_inspector
+/usr/bin/ruby3.0 -I /usr/lib/ruby/vendor_ruby -r ./siteconf20240414-47496-fnm6hp.rb extconf.rb
+creating Makefile
+
+current directory: /home/jlb/mesprojets/AppReservationsSalles/AppReservationssalles/vendor/bundle/ruby/3.0.0/gems/debug_inspector-1.2.0/ext/debug_inspector
+make DESTDIR\= clean
+
+current directory: /home/jlb/mesprojets/AppReservationsSalles/AppReservationssalles/vendor/bundle/ruby/3.0.0/gems/debug_inspector-1.2.0/ext/debug_inspector
+make DESTDIR\=
+compiling debug_inspector.c
+linking shared-object debug_inspector.so
+
+current directory: /home/jlb/mesprojets/AppReservationsSalles/AppReservationssalles/vendor/bundle/ruby/3.0.0/gems/debug_inspector-1.2.0/ext/debug_inspector
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 debug_inspector.so ./.gem.20240414-47496-b79ndj

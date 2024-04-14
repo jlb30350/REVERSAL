@@ -35,12 +35,14 @@ gem 'rails-ujs'
 
 gem 'sassc', '~> 2.0'
 
+gem 'better_errors'
+gem 'binding_of_caller'
 
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
-
+gem 'bootstrap', '~> 5.1.3'
 
 
 # Use Redis adapter to run Action Cable in production
@@ -94,3 +96,4 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+

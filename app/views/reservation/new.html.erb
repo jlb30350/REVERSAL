@@ -1,22 +1,51 @@
-
-<!--views/reservation/new.html.erb-->
-<h1>Nouvelle Salle</h1>
+<!-- views/salles/new.html.erb -->
+<h1>Création de votre nouvelle salle détaillée </h1>
 <%= image_tag 'logo.png', alt: 'Mon Logo', style: 'width: 50px; height: auto;' %>
 
-<%= form_with(model: @salle, url: salles_path, method: "post") do |form| %>
+<%= form_with(model: @salle, url: salles_path, method: "post", local: true) do |form| %>
   <div class="field">
     <%= form.label :name, "Nom de la salle" %>
     <%= form.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :capacity, "Capacité" %>
+    <%= form.label :capacity, "Capacité maximale" %>
     <%= form.number_field :capacity %>
   </div>
 
   <div class="field">
-    <%= form.label :amenities, "Équipements" %>
-    <%= form.text_area :amenities %>
+    <%= form.label :air_conditioning, "Climatisation réversible" %>
+    <%= form.check_box :air_conditioning %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sound_system, "Sono" %>
+    <%= form.check_box :sound_system %>
+  </div>
+
+  <div class="field">
+    <%= form.label :water_fountain, "Fontaine d'eau" %>
+    <%= form.check_box :water_fountain %>
+  </div>
+
+  <div class="field">
+    <%= form.label :projector, "Rétroprojecteur" %>
+    <%= form.check_box :projector %>
+  </div>
+
+  <div class="field">
+    <%= form.label :wifi_code, "Code WiFi" %>
+    <%= form.text_field :wifi_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :area, "Surface de la salle (en m²)" %>
+    <%= form.number_field :area %>
+  </div>
+
+  <div class="field">
+    <%= form.label :table_count, "Nombre de tables" %>
+    <%= form.number_field :table_count %>
   </div>
 
   <div class="actions">

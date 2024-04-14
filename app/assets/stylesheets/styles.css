@@ -1,18 +1,19 @@
 .container {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
+    /*max-width: 500px;*/
+    /*margin: 0 auto;
+    /*padding: 20px;*/
     text-align: center;
-    width: 200%;
+    /*width: 200%;*/
     /* Centrage plus précis du conteneur principal */
 
 
 
   /* Amélioration de l'aspect des champs du formulaire et du bouton de soumission */
 .form-control, .btn-primary, .btn-secondary {
-  margin-top: 10px; /* Espacement vertical entre les champs */
-  width: 70%; /* Utilisation maximale de l'espace dans le conteneur */
-  max-width: 500px; /* Largeur maximale pour les grands écrans */
+  /*margin-top: 10px; /* Espacement vertical entre les champs */
+  /*width: 70%; /* Utilisation maximale de l'espace dans le conteneur */
+  max-width: 200px; /* Largeur maximale pour les grands écrans */
+  height: 20px;
   }
 
   body, html {
@@ -140,7 +141,7 @@
 }
 
 /*signup et forgot*/
-.btn {
+/*.btn {
   display: inline-block;
   padding: 10px 15px;
   margin: 5px 0;
@@ -149,8 +150,8 @@
   text-align: center;
   border-radius: 5px;
   text-decoration: none; /* Supprime le soulignement des liens */
-  cursor: pointer;
-}
+  /*cursor: pointer;*/
+
 
 .btn:hover {
   background-color: #0056b3;
@@ -200,19 +201,22 @@
   margin-bottom: .6rem;
 }
 
-.form-control {
  
-  width: 30%;
-  padding: .375rem .75rem;
-  font-size: 1rem;
-  line-height: 1;
-  color: #495057;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  border-radius: .25rem;
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-  text-align: center;
+.form-control {
+    /*width: 50%; /* Utilisez 100% de la largeur disponible */
+    /*max-width: 200px; /* Limitez la largeur maximale pour éviter une largeur excessive sur les grands écrans */
+    /*padding: .375rem .75rem;
+    /*font-size: 1rem;
+    /*line-height: 1;
+    /*color: #495057;*/
+    background-color: #fff;
+    /*background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    text-align: center;
+  }*/
+  
 
 }
 
@@ -228,9 +232,9 @@
 
 /* listes de reservations Styles de base pour le body et les titres */
 body {
-  font-family: Arial, sans-serif;
+  /*font-family: Arial, sans-serif;*/
   margin: 0;
-  padding: 20px;
+  /*padding: 20px;*/
   background-color: #f4f4f4;
 }
 
@@ -270,11 +274,11 @@ h1.title {
   text-decoration: none;
   color: white;
   background-color: #007bff;
-  padding: 10px 15px;
+  /*padding: 10px 15px;*/
   border-radius: 20px;
   border: none;
   cursor: pointer;
-  margin-left: auto;
+  /*margin-left: auto;*/
 
 }
 
@@ -305,16 +309,16 @@ h1.title {
 
 /* styles.css pour bord arrondi sur toutes les pages*/
 .body-content {
-  width: 90%;
-  max-width: 600px; /* Ajustez selon le besoin */
-  min-height: 500px; /* Hauteur minimale pour commencer */
-  margin: 20px auto;
-  padding: 10px;
+  /*max-width: 900px; /* Ajustez selon le besoin */
+  /*margin: 20px auto;
   border: 10px solid #000;
-  border-radius: 15px;
+  border-radius: 55px;
   overflow-y: auto; /* Permet le défilement vertical si le contenu dépasse */
-  background-color: #98aec4;
+  background-color: antiquewhite;
+   
 }
+
+
 .table-responsive {
   overflow-x: auto;
 }
@@ -344,9 +348,9 @@ h1.title {
 
 .btn {
   display: inline-block;
-  text-align: center;
+  /*text-align: center;
   padding: 6px 12px; /* Ajustement pour les boutons petits */
-  margin: 10; /* Enlève les marges par défaut pour les aligner proprement */
+  margin: 5px; /* Enlève les marges par défaut pour les aligner proprement */
 }
 
 /* Responsive adjustments */
@@ -362,16 +366,16 @@ h1.title {
 
 .btn {
   width: 200px; /* Ou une autre largeur fixe de votre choix */
-  height: 25px; /* Ou une autre hauteur fixe de votre choix */
+  /*height: 25px; /* Ou une autre hauteur fixe de votre choix */
  
   text-align: center; /* Centrer le texte dans le bouton */
-  padding: 0; /* Ajuster selon le besoin pour s'assurer que le texte reste centré verticalement */
+  /*padding: 5px; /* Ajuster selon le besoin pour s'assurer que le texte reste centré verticalement */
 }
 @media (max-width: 768px) {
   .btn {
-    width: 100%; /* Les boutons prennent toute la largeur sur les petits écrans */
+    /*width: 30%; /* Les boutons prennent toute la largeur sur les petits écrans */
     height: auto; /* Ajustement de la hauteur pour le contenu */
-    padding: 10px 0; /* Plus de padding pour une meilleure lisibilité */
+    /*padding: 10px 0; /* Plus de padding pour une meilleure lisibilité */
   }
 }
 @media (max-width: 375px) {
@@ -390,4 +394,11 @@ h1.title {
     flex-direction: column; /* Empile les boutons verticalement */
     gap: 5px;
   }
+
+  /*reservation/edit/modif largeur des champs */
+  .small-input {
+    width: 100px; /* ou toute autre valeur que vous souhaitez */
+  }
+  
+
 }

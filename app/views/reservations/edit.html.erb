@@ -15,28 +15,47 @@
           </div>
         <% end %>
 
-        <%= form.label :lieu, class: 'form-label' %>
-        <%= form.text_field :lieu, class: 'form-control mb-3' %>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <%= form.label :lieu, class: 'form-label' %>
+            <%= form.text_field :lieu, class: 'form-control' %>
+          </div>
+          <div class="col-md-6">
+            <%= form.label :salle_id, 'Nom de la Salle', class: 'form-label' %>
+            <%= form.collection_select :salle_id, Salle.all, :id, :name, { prompt: "Sélectionner une salle" }, class: 'form-control' %>
+          </div>
+        </div>
 
-        <%= form.label :start_time, 'Date et Heure de Début', class: 'form-label' %>
-        <%= form.datetime_select :start_time, {}, class: 'form-control mb-3' %>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <%= form.label :start_time, 'Date et Heure de Début', class: 'form-label' %>
+            <%= form.datetime_select :start_time, {}, class: 'form-control' %>
+          </div>
+          <div class="col-md-6">
+            <%= form.label :end_time, 'Date et Heure de Fin', class: 'form-label' %>
+            <%= form.datetime_select :end_time, {}, class: 'form-control' %>
+          </div>
+        </div>
 
-        <%= form.label :end_time, 'Date et Heure de Fin', class: 'form-label' %>
-        <%= form.datetime_select :end_time, {}, class: 'form-control mb-3' %>
+        <div class="mb-3">
+          <%= form.label :reserver_name, 'Nom du Réservataire', class: 'form-label' %>
+          <%= form.text_field :reserver_name, class: 'form-control' %>
+        </div>
 
-        <%= form.label :reserver_name, 'Nom du Réservataire', class: 'form-label' %>
-        <%= form.text_field :reserver_name, class: 'form-control mb-3' %>
+        <div class="mb-3">
+          <%= form.label :reserver_phone, 'Téléphone du Réservataire', class: 'form-label' %>
+          <%= form.text_field :reserver_phone, class: 'form-control' %>
+        </div>
 
-        <%= form.label :reserver_phone, 'Téléphone du Réservataire', class: 'form-label' %>
-        <%= form.text_field :reserver_phone, class: 'form-control mb-3' %>
-
-        <%= form.label :reserver_email, 'Email du Réservataire', class: 'form-label' %>
-        <%= form.text_field :reserver_email, class: 'form-control mb-3' %>
+        <div class="mb-3">
+          <%= form.label :reserver_email, 'Email du Réservataire', class: 'form-label' %>
+          <%= form.text_field :reserver_email, class: 'form-control' %>
+        </div>
 
         <!-- Ajoutez d'autres champs ici selon les attributs de votre modèle de réservation -->
 
         <div class="d-flex justify-content-center">
-          <%= form.submit "Sauvegarder", class: "btn btn-primary mr-2" %>
+          <%= form.submit "Sauvegarder", class: "btn btn-primary me-2" %>
           <%= link_to 'Retour', reservations_path, class: "btn btn-secondary" %>
         </div>
       <% end %>

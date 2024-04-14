@@ -1,21 +1,21 @@
-<!-- app/views/salles/show.html.erb -->
-
 <h1>Détails de la salle</h1>
 
-<p>
-  <strong>Nom de la salle :</strong>
-  <%= @salle.name %>
-</p>
+<p><strong>Nom de la salle :</strong> <%= @salle.name %></p>
+<p><strong>Capacité :</strong> <%= @salle.capacity || "Non spécifiée" %></p>
+<p><strong>Description :</strong> <%= @salle.description.presence || "Aucune description disponible" %></p>
+<p><strong>Climatisation :</strong> <%= @salle.air_conditioning ? 'Oui' : 'Non' %></p>
+<p><strong>Système de son :</strong> <%= @salle.sound_system ? 'Oui' : 'Non' %></p>
+<p><strong>Fontaine d'eau :</strong> <%= @salle.water_fountain ? 'Oui' : 'Non' %></p>
+<p><strong>Rétroprojecteur :</strong> <%= @salle.projector ? 'Oui' : 'Non' %></p>
+<p><strong>Code WiFi :</strong> <%= @salle.wifi_code.presence || "Non disponible" %></p>
+<p><strong>Surface de la salle (m²) :</strong> <%= @salle.area.present? ? "#{@salle.area} m²" : "Non spécifiée" %></p>
+<p><strong>Nombre de tables :</strong> <%= @salle.table_count || "Non spécifié" %></p>
 
-<!-- Si vous avez d'autres attributs de la salle à afficher, ajoutez-les ici -->
+<div class="actions">
+  <%= link_to 'Modifier', edit_salle_path(@salle), class: "btn btn-primary" %>
+  <%= link_to 'Accueil', salles_path, class: "btn btn-secondary" %>
+  <%= form_with(model: @salle, method: :delete, local: true, data: { confirm: 'Êtes-vous sûr de vouloir supprimer cette salle?' }) do |f| %>
+    <%= f.submit 'Supprimer', class: "btn btn-danger" %>
+  <% end %>
+</div>
 
-<!-- Bouton pour éditer la salle -->
-<%= link_to 'Modifier', edit_salle_path(@salle), class: "btn btn-primary" %>
-
-<!-- Formulaire pour supprimer la salle -->
-<%= form_with(url: salle_path(@salle), method: :delete, data: { confirm: 'Êtes-vous sûr de vouloir supprimer cette salle?' }) do |form| %>
-  <%= form.submit 'Supprimer', class: "btn btn-danger" %>
-<% end %>
-
-<!-- Lien pour retourner à la liste des salles -->
-<%= link_to 'Acceuil', salles_path, class: "btn btn-secondary" %>

@@ -11,12 +11,21 @@
   <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
 </head>
 <body>
-  <% if current_user %>
-    <%= link_to 'Déconnexion', destroy_user_session_path, method: :delete, class: "btn btn-warning" %>
-    <%= button_to "Supprimer mon compte", destroy_user_path(current_user), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible." }, class: "btn btn-danger" %>
-  <% end %>
+  <div class="header">
+    <% if current_user %>
+      <div class="header-buttons">
+        <%= link_to 'Déconnexion', destroy_user_session_path, method: :delete, class: "btn btn-warning" %>
+        <%= button_to "Supprimer mon compte", destroy_user_path(current_user), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible." }, class: "btn btn-danger" %>
+      </div>
+    <% end %>
+    <div class="logo-container">
+      <!-- Votre logo ici -->
+    </div>
+  </div>
+
   <div class="body-content">
     <%= yield %>
   </div>
 </body>
 </html>
+

@@ -52,6 +52,6 @@ class SallesController < ApplicationController
   private
 
   def salle_params
-    params.require(:salle).permit(:name, :other_attributes)
+    params.require(:salle).permit(:name, :capacity, :description, :air_conditioning, :sound_system, :water_fountain, :projector, :wifi_code, :area, :table_count)
   end
 end
