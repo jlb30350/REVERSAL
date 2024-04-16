@@ -39,6 +39,7 @@ gem 'better_errors'
 gem 'binding_of_caller'
 
 
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
