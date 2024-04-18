@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      padding: 20px;
+      color: #333;
+    }
+    h2 {
+      color: #4A90E2;
+    }
+    button {
+      background-color: #4A90E2; /* Couleur de fond bleue */
+      color: white; /* Texte blanc */
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 5px; /* Bordures arrondies */
+    }
+    button:hover {
+      background-color: #357ABD; /* Couleur plus foncée au survol */
+    }
+  </style>
+</head>
+<body>
+  <h2>Message d'un client pour REVERSAL</h2>
+  <p><strong>Nom :</strong> <%= @name %></p>
+  <p><strong>Message :</strong> <%= @message %></p>
+  
+  <!-- Utilisation d'un bouton stylisé -->
+  <form action="<%= root_url %>">
+    <button type="submit">Retour à la page d'accueil de REVERSAL</button>
+  </form>
+</body>
+</html>

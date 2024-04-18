@@ -1,404 +1,183 @@
-.container {
-    /*max-width: 500px;*/
-    /*margin: 0 auto;
-    /*padding: 20px;*/
-    text-align: center;
-    /*width: 200%;*/
-    /* Centrage plus précis du conteneur principal */
-
-
-
-  /* Amélioration de l'aspect des champs du formulaire et du bouton de soumission */
-.form-control, .btn-primary, .btn-secondary {
-  /*margin-top: 10px; /* Espacement vertical entre les champs */
-  /*width: 70%; /* Utilisation maximale de l'espace dans le conteneur */
-  max-width: 200px; /* Largeur maximale pour les grands écrans */
-  height: 20px;
-  }
-
-  body, html {
-    height: 100%; /* Permet au corps et à l'html de s'étendre sur toute la hauteur de la page */
-    margin: 0; /* Enlève la marge par défaut */
-    display: flex;
-    flex-direction: column; /* Alignement vertical */
-    justify-content: center; /* Centrage du contenu dans la direction flex (ici verticale) */
-  }
-  
-
-  
-
-
-  }
-  
-  .title {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .reservations-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .reservations-table th,
-  .reservations-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  .reservations-table th {
-    background-color: #f2f2f2;
-  }
-  
-  .delete-button {
-    display: block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #ff0000;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
-    /* Centrage plus précis du conteneur principal */
-
-  .delete-button:hover {
-    background-color: #cc0000;
-  }
-  
- /* Conteneur global pour le centrage */
-.login-container {
+/* Styles de base pour la mise en page et le centrage */
+body, html {
+  height: 100%;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centre horizontalement les éléments flex enfants */
-  justify-content: center; /* Centre verticalement les éléments flex enfants */
-  min-height: 50vh; /* Utilise la hauteur de la fenêtre pour un centrage vertical complet */
-  padding: 10px;
+  justify-content: center;
 }
 
-/* Styles pour le formulaire de connexion */
-.login-form {
-  width: 100%;
-  max-width: 700px;
-  /*margin: auto;*/
+/* Conteneur principal pour les pages */
+.container {
   padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+}
+
+/* Styles pour les formulaires et les boutons */
+.form-control, .btn-primary, .btn-secondary, .btn, .blue-button, .delete-button, .form-submit {
+  height: 40px;
+  width: 90%;
+  max-width: 200px;
+  margin: 10px auto;
+  display: block;
+}
+
+
+.blue-button, .delete-button, .btn, .form-submit {
+  background-color: blue;
+  color: white;
+  border: none;
+  padding: 8px 12px; /* Taille réduite pour les boutons */
+  text-align: center;
+  text-decoration: none;
+  font-size: 12px; /* Taille de police réduite pour les boutons */
+  cursor: pointer;
+}
+
+.blue-button:hover, .delete-button:hover, .form-submit:hover {
+  background-color: darkblue;
+}
+
+/* Conteneur pour les boutons de connexion et de déconnexion */
+.auth-buttons {
+  display: flex;
+  justify-content: center; /* Centrage horizontal des boutons */
+  align-items: center; /* Centrage vertical des boutons */
+  gap: 10px; /* Espacement entre les boutons */
+  margin: 0 10px;           /* Espace autour des boutons pour ne pas qu'ils soient collés */
+}
+
+.header {
+  display: flex;
+  justify-content: center;  /* Centre horizontalement les éléments dans le header */
+  align-items: center;      /* Centre verticalement les éléments dans le header */
+  height: 100px;            /* Hauteur fixe pour le header, ajustez selon vos besoins */
+}
+
+/* Styles généraux pour les boutons (si nécessaire) */
+.btn {
+  padding: 10px 20px;
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none; /* Supprimer le soulignement si les boutons sont des liens */
+}
+
+.btn:hover {
+  background-color: #003a80;
+}
+
+/* Assurez-vous que les boutons sont bien visibles sur toutes les pages */
+body {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centre les éléments à l'intérieur du formulaire */
+  justify-content: center; /* Assure le centrage vertical général */
+  align-items: center; /* Assure le centrage horizontal général */
+  min-height: 100vh; /* Utilise toute la hauteur de la fenêtre */
+}
+
+
+/* Styles spécifiques pour la mise en forme des tables et des colonnes sur différents appareils */
+.reservations-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.reservations-table th, .reservations-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.reservations-table th {
+  background-color: #0056b3;
+}
+
+/* Media Queries pour l'adaptation sur les appareils mobiles et tablettes */
+@media only screen and (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+  .reservations-table {
+    width: 100%;
+  }
+  .reservations-table th:not(.essential), .reservations-table td:not(.essential) {
+    display: none;
+  }
+  .reservations-table th.essential, .reservations-table td.essential {
+    display: table-cell;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    padding: 20px;
+  }
+  .reservations-table th:nth-child(2), .reservations-table td:nth-child(2) {
+    display: none; /* Cacher certaines informations sur les tablettes */
+  }
+  .reservations-table th:nth-child(6), .reservations-table td:nth-child(6) {
+    display: table-cell; /* Assurez-vous que le nom du réservataire est visible */
+  }
+}
+
+/* Styles additionnels pour les éléments spécifiques des formulaires */
+.login-container, .contact-form-container, .login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  padding: 10px;
   background-color: #f2f2f2;
 }
 
+.login-form, .contact-form-container {
+  width: 100%;
+  max-width: 700px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
 .form-field {
-  width: 80%; /* Assure que les champs remplissent la largeur du formulaire */
+  width: 80%;
   margin-bottom: 30px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centre le label et le champ à l'intérieur de .form-field */
+  align-items: center;
 }
 
 .form-label, .form-input, .form-checkbox, .checkbox-label {
-  width: 90%; /* Ajuste ceci selon la largeur désirée pour les champs et labels */
-  margin: auto; /* Centre horizontalement dans leur conteneur .form-field */
+  width: 90%;
+  margin: auto;
 }
 
 .form-field.checkbox {
   flex-direction: row;
-  justify-content: center; /* Pour les éléments de la checkbox, assure un centrage horizontal */
+  justify-content: center;
+  gap: 10px;
 }
 
 .form-actions {
   width: 50%;
   display: flex;
-  justify-content: center; /* Centre le bouton dans .form-actions */
+  justify-content: center;
 }
 
 .form-submit {
-  width: 50%; /* Ajuste ceci pour contrôler la largeur du bouton de soumission */
+  width: 50%;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
+  background-color: #0056b3;
 }
 
 .form-submit:hover {
-  background-color: #0056b3;
-}
-.form-input[type="email"] {
-  padding: 16px; /* Ajustez cette valeur selon vos besoins */
+  background-color: #003a80;
 }
 
-.form-input[type="Password"] {
-  padding: 16px; /* Ajustez cette valeur selon vos besoins */
-}
-
-.form-field.checkbox {
-  display: flex;
-  align-items: center; /* Alignement vertical au centre */
-  gap: px; /* Ajuste l'espacement entre les éléments flex, ici entre la case à cocher et le label */
-}
-
-/*signup et forgot*/
-/*.btn {
-  display: inline-block;
-  padding: 10px 15px;
-  margin: 5px 0;
-  background-color: #007bff;
-  color: white;
-  text-align: center;
-  border-radius: 5px;
-  text-decoration: none; /* Supprime le soulignement des liens */
-  /*cursor: pointer;*/
-
-
-.btn:hover {
-  background-color: #0056b3;
-}
-
-.btn-sign-up {
-  background-color: #28a745; /* Vert */
-}
-
-.btn-sign-up:hover {
-  background-color: #218838;
-}
-
-.btn-forgot-password {
-  background-color: #17a2b8; /* Bleu clair */
-}
-
-.btn-forgot-password:hover {
-  background-color: #138496;
-}
-
-
-/*css pour views/reservations/show.html.erb*/
-.custom-border {
-  border: 2px solid #007bff; /* Bleu Bootstrap primary color */
-  border-radius: 0.25rem; /* Arrondit les coins */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ajoute une ombre légère */
-  padding: 20px; /* Espace intérieur pour ne pas coller au bord */
-  margin-bottom: 20px; /* Espace extérieur pour séparer des autres éléments */
-}
-
-/* app/assets/stylesheets/reservations.css */
-.needs-validation {
-  max-width: 300%;
-  margin: auto;
-  padding: 20px;
-  background: #f5f5f5;
-  border-radius: 15px;
-  box-shadow: 0 2px 4px rgba(0,0,0,.1);
-}
-
-.form-group {
-  margin-bottom: 1rem;
-}
-
-.form-label {
-  margin-bottom: .6rem;
-}
-
- 
-.form-control {
-    /*width: 50%; /* Utilisez 100% de la largeur disponible */
-    /*max-width: 200px; /* Limitez la largeur maximale pour éviter une largeur excessive sur les grands écrans */
-    /*padding: .375rem .75rem;
-    /*font-size: 1rem;
-    /*line-height: 1;
-    /*color: #495057;*/
-    background-color: #fff;
-    /*background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    text-align: center;
-  }*/
-  
-
-}
-
-.form-control:focus {
-  color: #495057;
-  background-color: #fff;
-  border-color: #80bdff;
-  outline: 0;
-  box-shadow: 0 0 0 .2rem rgba(0,123,255,.25);
-
-}
-
-
-/* listes de reservations Styles de base pour le body et les titres */
-body {
-  /*font-family: Arial, sans-serif;*/
-  margin: 0;
-  /*padding: 20px;*/
-  background-color: #f4f4f4;
-}
-
-h1.title {
-  color: #333;
-  text-align: center;
-}
-
-/* Styles pour le tableau */
-.reservations-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-.reservations-table th, .reservations-table td {
-  text-align: left;
-  padding: 8px;
-  border-bottom: 1px solid #ddd;
-}
-
-.reservations-table th {
-  background-color: #4CAF50;
-  color: white;
-}
-
-/* Rendre le tableau scrollable sur de petits écrans */
-@media screen and (max-width: 600px) {
-  .reservations-table {
-    overflow-x: auto;
-    display: block;
-  }
-}
-
-/* Styles pour les boutons et les liens */
-.btn, .delete-button {
-  text-decoration: none;
-  color: white;
-  background-color: #007bff;
-  /*padding: 10px 15px;*/
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
-  /*margin-left: auto;*/
-
-}
-
-
-
-
-.btn-secondary {
-  background-color: #6c757d;
-}
-
-.delete-button {
-  background-color: #dc3545;
-  margin-top: 10px;
-}
-
-.btn:hover, .delete-button:hover {
-  opacity: 0.9;
-}
-
-/* Checkbox et actions */
-.checkbox, #checkAll {
-  cursor: pointer;
-}
-
-.actions a {
-  margin-right: 10px;
-}
-
-/* styles.css pour bord arrondi sur toutes les pages*/
-.body-content {
-  /*max-width: 900px; /* Ajustez selon le besoin */
-  /*margin: 20px auto;
-  border: 10px solid #000;
-  border-radius: 55px;
-  overflow-y: auto; /* Permet le défilement vertical si le contenu dépasse */
-  background-color: antiquewhite;
-   
-}
-
-
-.table-responsive {
-  overflow-x: auto;
-}
-
-.reservations-table {
-  width: 100%;
-  border-collapse: collapse;
-    height: 80px; 
-}
-
-.reservations-table, .reservations-table th, .reservations-table td {
-  border: 1px solid #ddd;
-  height: 80px; 
-}
-
-.reservations-table th, .reservations-table td {
-  padding: 5px;
-  text-align: left;
-  height: 80px; 
-}
-
-.actions {
-  display: flex;
-  justify-content: center; /* Centrer les actions dans la cellule */
-  gap: 20px; /* Espacer les boutons */
-}
-
-.btn {
-  display: inline-block;
-  /*text-align: center;
-  padding: 6px 12px; /* Ajustement pour les boutons petits */
-  margin: 5px; /* Enlève les marges par défaut pour les aligner proprement */
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .actions {
-    flex-direction: column; /* Empile les boutons verticalement sur les petits écrans */
-  }
-}
-
-
-
-
-
-.btn {
-  width: 200px; /* Ou une autre largeur fixe de votre choix */
-  /*height: 25px; /* Ou une autre hauteur fixe de votre choix */
- 
-  text-align: center; /* Centrer le texte dans le bouton */
-  /*padding: 5px; /* Ajuster selon le besoin pour s'assurer que le texte reste centré verticalement */
-}
-@media (max-width: 768px) {
-  .btn {
-    /*width: 30%; /* Les boutons prennent toute la largeur sur les petits écrans */
-    height: auto; /* Ajustement de la hauteur pour le contenu */
-    /*padding: 10px 0; /* Plus de padding pour une meilleure lisibilité */
-  }
-}
-@media (max-width: 375px) {
-  /* Vos styles pour écrans jusqu'à 375px de large ici */
-  .container, .table-responsive {
-    width: 100%;
-    padding: 0 10px; /* Ajoute un peu de padding pour ne pas coller aux bords */
-  }
-
-  .reservations-table, .actions {
-    font-size: 0.8rem; /* Réduire la taille de la police pour économiser de l'espace */
-  }
-
-  /* Ajustez la disposition des boutons pour éviter l'encombrement */
-  .actions {
-    flex-direction: column; /* Empile les boutons verticalement */
-    gap: 5px;
-  }
-
-  /*reservation/edit/modif largeur des champs */
-  .small-input {
-    width: 100px; /* ou toute autre valeur que vous souhaitez */
-  }
-  
-
+.form-input[type="email"], .form-input[type="Password"] {
+  padding: 16px;
 }

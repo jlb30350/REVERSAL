@@ -15,6 +15,7 @@ gem "sqlite3", "~> 1.4"
 
 gem 'date', '~> 3.3.4'
 
+gem 'letter_opener'
 
 
 # Use the Puma web server [https://github.com/puma/puma]
@@ -83,9 +84,7 @@ group :development do
   # gem "spring"
 end
 
-group :development do
-  gem 'letter_opener'
-end
+
 
 group :development do
   gem 'foreman'

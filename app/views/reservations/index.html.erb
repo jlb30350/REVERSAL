@@ -5,6 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Liste des réservations</title>
   <link rel="stylesheet" href="/assets/styles.css">
+  <style>
+    @media (max-width: 768px) {
+      .reservations-table th:not(.essential), .reservations-table td:not(.essential) {
+        display: none; /* Masquer les colonnes non essentielles sur les petits écrans */
+      }
+      .container {
+        padding: 10px;
+      }
+    }
+    /* Style pour les boutons et les formes en haut de la table pour faciliter l'accès */
+    .btn {
+      margin: 5px;
+      padding: 10px 15px;
+    }
+  </style>
 </head>
 <body>
 
@@ -15,29 +30,29 @@
       <table class="reservations-table">
         <thead>
           <tr>
-            <th><input type="checkbox" id="checkAll"></th>
-            <th>ID de la Réservation</th>
-            <th>Nom de la Salle</th>
+            <th class="essential"><input type="checkbox" id="checkAll"></th>
+            <th class="essential">ID</th>
+            <th class="essential">Nom de la Salle</th>
             <th>Date et Heure de Début</th>
             <th>Date et Heure de Fin</th>
             <th>Nom du Réservataire</th>
-            <th>Téléphone du Réservataire</th>
-            <th>Email du Réservataire</th>
-            <th>Actions</th>
+            <th>Téléphone</th>
+            <th>Email</th>
+            <th class="essential">Actions</th>
           </tr>
         </thead>
         <tbody>
           <% @reservations.each do |reservation| %>
             <tr>
-              <td><%= check_box_tag "reservation_ids[]", reservation.id, false, class: "checkbox" %></td>
-              <td><%= reservation.id %></td>
-              <td><%= reservation.salle.present? ? reservation.salle.name : "Salle inconnue" %></td>
+              <td class="essential"><%= check_box_tag "reservation_ids[]", reservation.id, false, class: "checkbox" %></td>
+              <td class="essential"><%= reservation.id %></td>
+              <td class="essential"><%= reservation.salle.present? ? reservation.salle.name : "Salle inconnue" %></td>
               <td><%= reservation.start_time %></td>
               <td><%= reservation.end_time %></td>
               <td><%= reservation.reserver_name %></td>
               <td><%= reservation.reserver_phone %></td>
               <td><%= reservation.reserver_email %></td>
-              <td class="actions">
+              <td class="essential">
                 <%= link_to 'Show', reservation, class: "btn btn-primary btn-sm" %>
                 <%= link_to 'Edit', edit_reservation_path(reservation), class: "btn btn-secondary btn-sm" %>
               </td>
@@ -59,6 +74,8 @@
     });
   });
 </script>
+</body>
+</html>
 
 </body>
 </html>

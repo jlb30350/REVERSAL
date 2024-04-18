@@ -16,14 +16,15 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new
   end
 
- 
-
-
   # POST /reservations
   def create
     @reservation = current_user.reservations.build(reservation_params)
+
     respond_to do |format|
       if @reservation.save
+        # Envoyer un e-mail de confirmation à l'utilisateur
+        UserMailer.confirmation_email(@reservation).deliver_now
+
         format.html { redirect_to @reservation, notice: 'Réservation créée avec succès.' }
         format.js { render layout: false, content_type: 'text/javascript' }
       else
@@ -59,9 +60,6 @@ class ReservationsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-
-
 
   # DELETE /reservations/:id
   def destroy

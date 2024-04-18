@@ -2,6 +2,14 @@ Rails.application.routes.draw do
   # Devise routes for authentication
   devise_for :users
 
+  # Dans config/routes.rb
+  #post '/send_message', to: 'contacts#send_message'
+
+  # config/routes.rb
+  post 'send_contact', to: 'contacts#send_email'
+
+  get '/contact', to: 'contacts#new'
+
   # Resources for "salles" with all CRUD operations
   resources :salles
 

@@ -1,54 +1,114 @@
 <!-- views/salles/new.html.erb -->
-<h1>Création de votre nouvelle salle détaillée </h1>
-<%= image_tag 'logo.png', alt: 'Mon Logo', style: 'width: 50px; height: auto;' %>
 
-<%= form_with(model: @salle, url: salles_path, method: "post", local: true) do |form| %>
-  <div class="field">
-    <%= form.label :name, "Nom de la salle" %>
-    <%= form.text_field :name %>
-  </div>
 
-  <div class="field">
-    <%= form.label :capacity, "Capacité maximale" %>
-    <%= form.number_field :capacity %>
-  </div>
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      padding: 20px;
+      margin: 0;
+      background-color: #f4f4f4; /* Couleur de fond légère */
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .field {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box; /* S'assure que le padding ne déborde pas */
+    }
+    .actions input[type="submit"] {
+      background-color: #4A90E2;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .actions input[type="submit"]:hover {
+      background-color: #357ABD;
+    }
+    @media (max-width: 768px) {
+      .container {
+        width: 95%;
+        padding: 10px;
+      }
+      body {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Création de votre nouvelle salle détaillée</h1>
+  <%= image_tag 'logo.png', alt: 'Mon Logo', style: 'width: 50px; height: auto;' %>
 
-  <div class="field">
-    <%= form.label :air_conditioning, "Climatisation réversible" %>
-    <%= form.check_box :air_conditioning %>
-  </div>
+  <%= form_with(model: @salle, url: salles_path, method: "post", local: true) do |form| %>
+    <div class="field">
+      <%= form.label :name, "Nom de la salle" %>
+      <%= form.text_field :name %>
+    </div>
 
-  <div class="field">
-    <%= form.label :sound_system, "Sono" %>
-    <%= form.check_box :sound_system %>
-  </div>
+    <div class="field">
+      <%= form.label :capacity, "Capacité maximale" %>
+      <%= form.number_field :capacity %>
+    </div>
 
-  <div class="field">
-    <%= form.label :water_fountain, "Fontaine d'eau" %>
-    <%= form.check_box :water_fountain %>
-  </div>
+    <div class="field">
+      <%= form.label :air_conditioning, "Climatisation réversible" %>
+      <%= form.check_box :air_conditioning %>
+    </div>
 
-  <div class="field">
-    <%= form.label :projector, "Rétroprojecteur" %>
-    <%= form.check_box :projector %>
-  </div>
+    <div class="field">
+      <%= form.label :sound_system, "Sono" %>
+      <%= form.check_box :sound_system %>
+    </div>
 
-  <div class="field">
-    <%= form.label :wifi_code, "Code WiFi" %>
-    <%= form.text_field :wifi_code %>
-  </div>
+    <div class="field">
+      <%= form.label :water_fountain, "Fontaine d'eau" %>
+      <%= form.check_box :water_fountain %>
+    </div>
 
-  <div class="field">
-    <%= form.label :area, "Surface de la salle (en m²)" %>
-    <%= form.number_field :area %>
-  </div>
+    <div class="field">
+      <%= form.label :projector, "Rétroprojecteur" %>
+      <%= form.check_box :projector %>
+    </div>
 
-  <div class="field">
-    <%= form.label :table_count, "Nombre de tables" %>
-    <%= form.number_field :table_count %>
-  </div>
+    <div class="field">
+      <%= form.label :wifi_code, "Code WiFi" %>
+      <%= form.text_field :wifi_code %>
+    </div>
 
-  <div class="actions">
-    <%= form.submit "Créer la salle" %>
-  </div>
-<% end %>
+    <div class="field">
+      <%= form.label :area, "Surface de la salle (en m²)" %>
+      <%= form.number_field :area %>
+    </div>
+
+    <div class="field">
+      <%= form.label :table_count, "Nombre de tables" %>
+      <%= form.number_field :table_count %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "Créer la salle" %>
+    </div>
+  <% end %>
+</div>
+</body>
+</html>

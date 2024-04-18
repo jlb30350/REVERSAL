@@ -1,0 +1,41 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+  <h1>Confirmation de réservation</h1>
+  <p>Objet : Confirmation de votre réservation</p>
+
+  <p>Bonjour <%= @reservation.reserver_name %>,</p>
+
+  <p>Nous sommes ravis de vous confirmer votre réservation de la salle pour :</p>
+  
+  <table>
+    <tr>
+      <th>ID de réservation</th>
+      <th>Nom de la salle</th>
+      <th>Date de début</th>
+      <th>Date de fin</th>
+      <th>Votre nom</th>
+      <th>Votre téléphone</th>
+      <th>Votre e-mail</th>
+    </tr>
+    <tr>
+      <td><%= @reservation.id %></td>
+      <td><%= @reservation.salle.name if @reservation.salle %></td> <!-- Ajustez si nécessaire -->
+      <td><%= @reservation.start_time.strftime("%d/%m/%Y %H:%M") %></td>
+      <td><%= @reservation.end_time.strftime("%d/%m/%Y %H:%M") %></td>
+      <td><%= @reservation.reserver_name %></td>
+      <td><%= @reservation.reserver_phone %></td>
+      <td><%= @reservation.reserver_email %></td>
+    </tr>
+  </table>
+  
+  <p>Pour nous envoyer un message, veuillez cliquer sur le lien ci-dessous :</p>
+  <a href="http://localhost:3000/contact">Envoyez-nous un message</a>
+  
+ 
